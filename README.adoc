@@ -1,0 +1,21 @@
+= Metanorma NIST Models
+
+This is where we keep the Metanorma NIST model definitions.
+
+The NIST Standard Document format is an instance of the
+https://github.com/riboseinc/metanorma-model-standoc[Metanorma StandardDocument model].
+Details of the general model can be found on its page.
+
+
+== NIST Standard Document Model
+
+image::images/nist-standard-document.png[]
+
+== NIST Bibliographic Item Model
+
+image::images/nist-bibliographic-item.png[]
+
+== Notes
+
+
+

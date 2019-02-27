@@ -1,0 +1,21 @@
+<select id="edit-field-nist-pub-series-tid" name="field_nist_pub_series_tid" class="form-select">
+  <option value="All" selected="selected">- Any -</option>
+  <option value="8661">All NIST Publications</option>
+  <option value="2747816">Advanced Manufacturing Series (NIST AMS)</option>
+  <option value="8726">Building Science Series</option>
+  <option value="8701">Federal Inf. Process. Stds. (NIST FIPS)</option>
+  <option value="8691">Grant/Contract Reports (NISTGCR)</option>
+  <option value="8676">Handbook (NIST HB)</option>
+  <option value="8736">ITL Bulletin</option>
+  <option value="8671">J. Phys. &amp; Chem. Ref. Data (JPCRD)</option>
+  <option value="8666">Journal of Research (NIST JRES)</option>
+  <option value="8721">Letter Circular</option>
+  <option value="8716">Monograph (NIST MN)</option>
+  <option value="8706">National Construction Safety Team Act Reports (NIST NCSTAR)</option>
+  <option value="8696">Natl Std. Ref. Data Series (NIST NSRDS)</option>
+  <option value="8711">NIST Interagency/Internal Report (NISTIR)</option>
+  <option value="8731">Product Standards</option>
+  <option value="8681">Special Publication (NIST SP)</option>
+  <option value="8686">Technical Note (NIST TN)</option>
+  <option value="8741">Other</option>
+</select>

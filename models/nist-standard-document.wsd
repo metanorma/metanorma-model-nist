@@ -1,0 +1,62 @@
+@startuml nist-standard-document
+/'
+Diagram:        NistStandardDocument
+DateCreate:     22/08/2018
+Description:    Metanorma IsoDoc is a family of document models intended to represent ISO Standards and similarly structured standards,
+                based on the Metanorma StandardDocument ("StanDoc") and BasicDocument ("BasicDoc") models.
+                It is used to abstract the automated generation of standard documents in various formats from well-defined authoring tools;
+                and to validate the structural conformance of authored standards to specifications.
+'/
+
+'******* CONFIGURATION ************************************************
+!include style.uml.inc
+
+
+'******* CLASS DEFINITION *********************************************
+class StandardDocument <<StandardDocument>> {
+
+}
+
+class NistStandardDocument {
+  +bibdata: NistBibliographicItem
+  +preface: HierarchicalSection[0..1]
+  +introduction: HierarchicalSection[0..1]
+  +sections: ClauseSection[1..*]
+  +annex: AnnexSection[0..*]
+}
+
+
+class TextElement <<BasicDoc>>{
+
+}
+
+class Keyword {
+
+}
+
+class IdElement <<BasicDoc>>{
+
+}
+
+class Figure{
+    +source: String[0..1]
+    +name: LocalizedString[0..1]
+    +note: ParagraphWithFootnote[0..*]
+    +figure: Figure[0..*]
+    +definitions: DefinitionList[0..1]
+    +pre: String[0..1]
+    +content: TextElement[0..*]
+}
+
+'******* NOTES ********************************************************
+
+
+
+'******* CLASS RELATIONS **********************************************
+StandardDocument <-- NistStandardDocument
+
+TextElement <-- Keyword
+
+IdElement <-- Figure
+
+@enduml

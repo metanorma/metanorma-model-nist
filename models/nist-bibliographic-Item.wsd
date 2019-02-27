@@ -1,0 +1,149 @@
+@startuml nist-bibliographic-item
+/'
+Diagram:        NistBibliographicItem
+DateCreate:     19/02/2019
+Description:    Metanorma IsoDoc is a family of document models intended to represent ISO Standards and similarly structured standards,
+                based on the Metanorma StandardDocument ("StanDoc") and BasicDocument ("BasicDoc") models.
+                It is used to abstract the automated generation of standard documents in various formats from well-defined authoring tools;
+                and to validate the structural conformance of authored standards to specifications.
+'/
+
+'******* CONFIGURATION ************************************************
+!include style.uml.inc
+
+
+'******* CLASS DEFINITION *********************************************
+class BibliographicItem <<StandardDocument>>{
+
+}
+
+class NistBibliographicItem {
+  +documentIdentifier: NistDocumentId
+  +title: NistTitle
+  +series: NistPubSeries
+  +series-sp: NistSpSeries[0..1]
+  +type: NistPubSeries
+  +documentStatus: NistDocumentStatus[0..1]
+  'edition can be "-1" in "FIPS 198-1" or "Rev. 1" in "SP 800-179 Rev. 1"
+  +edition: String
+  +keywords: String[0..*]
+  +topics: NistTopic[0..*]
+  +families: NistFamily[0..*]
+  +doiUri: Uri
+  'e.g. https://doi.org/10.6028/NIST.FIPS.202
+  +uri: Uri
+  'e.g. https://nvlpubs.nist.gov/nistpubs/FIPS/NIST.FIPS.202.pdf
+  +currentUrl: Uri
+  'e.g. https://csrc.nist.gov/publications/detail/fips/202/final
+  +commentPeriod: NistCommentPeriod[0..1]
+}
+
+class NistTitle{
+  +titleIntro: FormattedString[1..*]
+  'subtitle
+  +titleMain: FormattedString[0..*]
+  +titlePart: FormattedString[0..*]
+}
+
+'BibliographicDates:
+' release date, publication
+
+enum NistTopic <<enumeration>> {
+  'see nist-topic-areas.txt for valid topics
+}
+
+class NistDocumentId {
+  'id can be "201-2" in "FIPS 201-2" ("-2" is edition), or "1800-19" in "SP 1800-19" ("-19" is part)
+  +id: String[0..1]
+  +partNumber: Integer[0..1]
+}
+
+enum NistSpSeries <<enumeration>> {
+  computer-security
+  information-security
+}
+
+enum NistTopicArea <<enumeration>> {
+}
+
+enum NistPubSeries <<enumeration>> {
+  'Advanced Manufacturing Series (NIST AMS)                     value="2747816"
+  nist-ams
+  'Building Science Series                                      value="8726"
+  building-science
+  'Federal Inf. Process. Stds. (NIST FIPS)                      value="8701"
+  nist-fips
+  'Grant/Contract Reports (NISTGCR)                             value="8691"
+  nist-gcr
+  'Handbook (NIST HB)                                           value="8676"
+  nist-hb
+  'ITL Bulletin                                                 value="8736"
+  itl-bulletin
+  'J. Phys. &amp; Chem. Ref. Data (JPCRD)                       value="8671"
+  jpcrd
+  'Journal of Research (NIST JRES)                              value="8666"
+  nist-jres
+  'Letter Circular                                              value="8721"
+  letter-circular
+  'Monograph (NIST MN)                                          value="8716"
+  nist-monograph
+  'National Construction Safety Team Act Reports (NIST NCSTAR)  value="8706"
+  nist-ncstar
+  'Natl Std. Ref. Data Series (NIST NSRDS)                      value="8696"
+  nist-nsrds
+  'NIST Interagency/Internal Report (NISTIR)                    value="8711"
+  nistir
+  'Product Standards                                            value="8731"
+  product-standards
+  'Special Publication (NIST SP)                                value="8681"
+  nist-sp
+  'Technical Note (NIST TN)                                     value="8686"
+  nist-tn
+  'Other                                                        value="8741"
+  other
+  csrc-white-paper
+  csrc-book
+  csrc-use-case
+  csrc-building-block
+}
+
+class NistDocumentStatus {
+  +type: NistDocumentStatusType
+  +iteration: Integer[0..1]
+}
+
+class NistCommentPeriod {
+  +from: Date
+  +to: Date
+}
+
+enum NistDocumentStatusType <<enumeration>> {
+  public-draft
+  final
+  retired-draft
+  withdrawn
+  private-draft
+  'private-draft is added since there is "public-draft"
+}
+
+
+'******* NOTES ********************************************************
+
+'note below of NistBibliographicItem: For valid values in 'topics', please refer to nist-topic-areas.txt\n
+
+'******* CLASS RELATIONS **********************************************
+BibliographicItem <|-- NistBibliographicItem
+
+NistBibliographicItem <-- NistDocumentId
+NistBibliographicItem <-- NistTitle
+NistBibliographicItem <-- NistPubSeries
+NistBibliographicItem <-- NistSpSeries
+NistBibliographicItem <-- NistDocumentStatus
+NistBibliographicItem <-- NistTopic
+NistBibliographicItem <-- NistFamily
+NistBibliographicItem <-- NistCommentPeriod
+
+NistDocumentStatus <-- NistDocumentStatusType
+
+@enduml
+
