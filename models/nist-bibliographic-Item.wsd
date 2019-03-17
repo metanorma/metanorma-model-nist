@@ -27,7 +27,6 @@ class NistBibliographicItem {
   'edition can be "-1" in "FIPS 198-1" or "Rev. 1" in "SP 800-179 Rev. 1"
   +edition: String
   +keywords: String[0..*]
-  +topics: NistTopic[0..*]
   +families: NistFamily[0..*]
   +doiUri: Uri
   'e.g. https://doi.org/10.6028/NIST.FIPS.202
@@ -39,18 +38,13 @@ class NistBibliographicItem {
 }
 
 class NistTitle{
-  +titleIntro: FormattedString[1..*]
-  'subtitle
-  +titleMain: FormattedString[0..*]
-  +titlePart: FormattedString[0..*]
+  +title_main: FormattedString[1..*]
+  +title_sub: FormattedString[0..*]
+  +title_part: FormattedString[0..*]
 }
 
 'BibliographicDates:
 ' release date, publication
-
-enum NistTopic <<enumeration>> {
-  'see nist-topic-areas.txt for valid topics
-}
 
 enum NistFamily <<enumeration>> {
   access-control
@@ -83,9 +77,6 @@ class NistDocumentId {
 enum NistSpSeries <<enumeration>> {
   computer-security
   information-security
-}
-
-enum NistTopicArea <<enumeration>> {
 }
 
 enum NistPubSeries <<enumeration>> {
@@ -151,7 +142,6 @@ enum NistDocumentStatusType <<enumeration>> {
 
 '******* NOTES ********************************************************
 
-'note below of NistBibliographicItem: For valid values in 'topics', please refer to nist-topic-areas.txt\n
 
 '******* CLASS RELATIONS **********************************************
 BibliographicItem <|-- NistBibliographicItem
@@ -161,7 +151,6 @@ NistBibliographicItem <-- NistTitle
 NistBibliographicItem <-- NistPubSeries
 NistBibliographicItem <-- NistSpSeries
 NistBibliographicItem <-- NistDocumentStatus
-NistBibliographicItem <-- NistTopic
 NistBibliographicItem <-- NistFamily
 NistBibliographicItem <-- NistCommentPeriod
 
