@@ -20,6 +20,13 @@ class BibliographicItem <<StandardDocument>>{
 class NistBibliographicItem {
   +documentIdentifier: NistDocumentId
   +title: NistTitle
+  +link: TypedUri
+  'e.g. https://csrc.nist.gov/publications/detail/fips/202/final
+  '+uri: Uri
+  'e.g. https://nvlpubs.nist.gov/nistpubs/FIPS/NIST.FIPS.202.pdf
+  +doi: TypedUri
+  'e.g. https://doi.org/10.6028/NIST.FIPS.202
+  +docemail: TypedUri[0..1]
   +series: NistPubSeries
   +series-sp: NistSpSeries[0..1]
   +type: NistPubSeries
@@ -28,12 +35,8 @@ class NistBibliographicItem {
   +edition: String
   +keywords: String[0..*]
   +families: NistFamily[0..*]
-  +doiUri: Uri
+  +doi: Uri
   'e.g. https://doi.org/10.6028/NIST.FIPS.202
-  +uri: Uri
-  'e.g. https://nvlpubs.nist.gov/nistpubs/FIPS/NIST.FIPS.202.pdf
-  +currentUrl: Uri
-  'e.g. https://csrc.nist.gov/publications/detail/fips/202/final
   +commentPeriod: NistCommentPeriod[0..1]
 }
 
@@ -122,7 +125,7 @@ enum NistPubSeries <<enumeration>> {
 
 class NistDocumentStatus {
   +type: NistDocumentStatusType
-  +iteration: Integer[0..1]
+  +iteration: String[0..1]
 }
 
 class NistCommentPeriod {
@@ -141,7 +144,7 @@ enum NistDocumentStatusType <<enumeration>> {
 
 
 '******* NOTES ********************************************************
-
+note right of NistBibliographicItem: The type of uri is "uri".\nThe type of doi is "doi".
 
 '******* CLASS RELATIONS **********************************************
 BibliographicItem <|-- NistBibliographicItem
