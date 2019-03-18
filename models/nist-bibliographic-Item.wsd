@@ -29,12 +29,11 @@ class NistBibliographicItem {
   'e.g. https://doi.org/10.6028/NIST.FIPS.202
   +docemail: TypedUri[0..1]
   +series: NistPubSeriesType
-  +series: NistSpSeries[0..1]
+  +subseries: NistSpSeriesType[0..1]
   +documentStatus: NistDocumentStatus[0..1]
   'edition can be "-1" in "FIPS 198-1" or "Rev. 1" in "SP 800-179 Rev. 1"
   +edition: String
   +keywords: String[0..*]
-  +families: NistFamily[0..*]
   +commentPeriod: NistCommentPeriod[0..1]
 }
 
@@ -46,28 +45,6 @@ class NistTitle{
 
 'BibliographicDates:
 ' release date, publication
-
-enum NistFamily <<enumeration>> {
-  access-control
-  audit-and-accountability
-  awareness-and-training
-  configuration-management
-  contingency-planning
-  family
-  identification-and-authentication
-  incident-response
-  maintenance
-  media-protection
-  personnel-security
-  physical-and-environmental-protection
-  planning
-  program-management
-  risk-assessment
-  security-assessment-and-authorization
-  system-and-communications-protection
-  system-and-information-integrity
-  system-and-services-acquisition
-}
 
 class NistDocumentId {
   'id can be "201-2" in "FIPS 201-2" ("-2" is edition), or "1800-19" in "SP 1800-19" ("-19" is part)
@@ -163,10 +140,9 @@ BibliographicItem <|-- NistBibliographicItem
 
 NistBibliographicItem <-- NistDocumentId
 NistBibliographicItem <-- NistTitle
-NistBibliographicItem <-- NistPubSeries
-NistBibliographicItem <-- NistSpSeries
+NistBibliographicItem <-- NistPubSeriesType
+NistBibliographicItem <-- NistSpSeriesType
 NistBibliographicItem <-- NistDocumentStatus
-NistBibliographicItem <-- NistFamily
 NistBibliographicItem <-- NistCommentPeriod
 
 NistDocumentStatus <-- NistDocumentStatusType
