@@ -18,6 +18,7 @@ class BibliographicItem <<StandardDocument>>{
 }
 
 class NistBibliographicItem {
+  +type: BibItemType
   +documentIdentifier: NistDocumentId
   +title: NistTitle
   +link: TypedUri
@@ -27,16 +28,13 @@ class NistBibliographicItem {
   +doi: TypedUri
   'e.g. https://doi.org/10.6028/NIST.FIPS.202
   +docemail: TypedUri[0..1]
-  +series: NistPubSeries
+  +series: NistPubSeriesType
   +series-sp: NistSpSeries[0..1]
-  +type: NistPubSeries
   +documentStatus: NistDocumentStatus[0..1]
   'edition can be "-1" in "FIPS 198-1" or "Rev. 1" in "SP 800-179 Rev. 1"
   +edition: String
   +keywords: String[0..*]
   +families: NistFamily[0..*]
-  +doi: Uri
-  'e.g. https://doi.org/10.6028/NIST.FIPS.202
   +commentPeriod: NistCommentPeriod[0..1]
 }
 
@@ -73,7 +71,7 @@ enum NistFamily <<enumeration>> {
 
 class NistDocumentId {
   'id can be "201-2" in "FIPS 201-2" ("-2" is edition), or "1800-19" in "SP 1800-19" ("-19" is part)
-  +id: String[0..1]
+  +id: String
   +partNumber: Integer[0..1]
 }
 
@@ -82,7 +80,15 @@ enum NistSpSeries <<enumeration>> {
   information-security
 }
 
-enum NistPubSeries <<enumeration>> {
+class SeriesType <<biblio>> {
+}
+
+class NistPubSeriesType {
+   +type: "main"
+   +title: NistPubSeriesEnum
+}
+
+enum NistPubSeriesEnum <<enumeration>> {
   'Advanced Manufacturing Series (NIST AMS)                     value="2747816"
   nist-ams
   'Building Science Series                                      value="8726"
@@ -144,7 +150,7 @@ enum NistDocumentStatusType <<enumeration>> {
 
 
 '******* NOTES ********************************************************
-note right of NistBibliographicItem: The type of uri is "uri".\nThe type of doi is "doi".
+note right of NistBibliographicItem: The type of uri is omitted.\nThe type of doi is "doi".
 
 '******* CLASS RELATIONS **********************************************
 BibliographicItem <|-- NistBibliographicItem
@@ -158,6 +164,9 @@ NistBibliographicItem <-- NistFamily
 NistBibliographicItem <-- NistCommentPeriod
 
 NistDocumentStatus <-- NistDocumentStatusType
+
+SeriesType <|-- NistPubSeriesType
+NistPubSeriesType <-- NistPubSeriesEnum
 
 @enduml
 
