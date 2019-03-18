@@ -119,7 +119,7 @@ class NistDocumentStatus {
 
 class NistCommentPeriod {
   +from: Date
-  +to: Date
+  +to: Date[0..1]
 }
 
 enum NistDocumentStatusType <<enumeration>> {
