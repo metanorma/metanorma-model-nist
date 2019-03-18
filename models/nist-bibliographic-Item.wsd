@@ -33,7 +33,7 @@ class NistBibliographicItem {
   +documentStatus: NistDocumentStatus[0..1]
   'edition can be "-1" in "FIPS 198-1" or "Rev. 1" in "SP 800-179 Rev. 1"
   +edition: String
-  +keywords: String[0..*]
+  +keyword: String[1..*]
   +commentPeriod: NistCommentPeriod[0..1]
 }
 
