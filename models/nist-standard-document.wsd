@@ -19,10 +19,28 @@ class StandardDocument <<StandardDocument>> {
 
 class NistStandardDocument {
   +bibdata: NistBibliographicItem
-  +preface: HierarchicalSection[0..1]
+  +preface: Preface[0..1]
   +introduction: HierarchicalSection[0..1]
   +sections: ClauseSection[1..*]
   +annex: AnnexSection[0..*]
+}
+
+class Preface {
+  +abstract: HierarchicalSection[0..1],
+  +authority: Authority,
+  +foreword: HierarchicalSection[0..1],
+  +introduction: HierarchicalSection[0..1],
+  +clause: HierarchicalSection[0..*],
+  +reviewernote: HierarchicalSection[0..1],
+  +executivesummary: HierarchicalSection[0..1],
+}
+
+class Authority {
+  +authority1: StandardSection,
+  +authority2: StandardSection,
+  +authority3: StandardSection,
+  +authority4: StandardSection,
+  +authority5: StandardSection
 }
 
 
@@ -54,6 +72,8 @@ class Figure{
 
 '******* CLASS RELATIONS **********************************************
 StandardDocument <-- NistStandardDocument
+NistStandardDocument <-- Preface
+Preface <-- Authority
 
 TextElement <-- Keyword
 
