@@ -20,7 +20,9 @@ class BibliographicItem <<StandardDocument>>{
 class NistBibliographicItem {
   +type: BibItemType
   +documentIdentifier: NistDocumentId
-  +title: NistTitle
+  +title: FormattedString[1..*]
+  +subtitle: FormattedString[0..*]
+  +document_class_title: FormattedString[0..*]
   +link: TypedUri
   'e.g. https://csrc.nist.gov/publications/detail/fips/202/final
   '+uri: Uri
@@ -29,17 +31,11 @@ class NistBibliographicItem {
   'e.g. https://doi.org/10.6028/NIST.FIPS.202
   +docemail: TypedUri[0..1]
   +series: NistPubSeriesType
-  +subseries: NistSpSeriesType[0..1]
   +documentStatus: NistDocumentStatus[0..1]
   'edition can be "-1" in "FIPS 198-1" or "Rev. 1" in "SP 800-179 Rev. 1"
   +edition: String
   +keyword: String[1..*]
   +commentPeriod: NistCommentPeriod[0..1]
-}
-
-class NistTitle{
-  +title_main: FormattedString[1..*]
-  +title_sub: FormattedString[0..*]
 }
 
 'BibliographicDates:
@@ -50,11 +46,6 @@ class NistDocumentId {
   +id: String
 }
 
-enum NistSpSeriesEnum <<enumeration>> {
-  computer-security
-  information-security
-}
-
 class SeriesType <<biblio>> {
 }
 
@@ -62,11 +53,6 @@ class NistPubSeriesType {
    +type: "main"
    +title: NistPubSeriesEnum
    +abbreviation: String[0..1]
-}
-
-class NistSpSeriesType {
-   +type: "secondary"
-   +title: NistSpSeriesEnum
 }
 
 enum NistPubSeriesEnum <<enumeration>> {
@@ -140,16 +126,13 @@ BibliographicItem <|-- NistBibliographicItem
 NistBibliographicItem <-- NistDocumentId
 NistBibliographicItem <-- NistTitle
 NistBibliographicItem <-- NistPubSeriesType
-NistBibliographicItem <-- NistSpSeriesType
 NistBibliographicItem <-- NistDocumentStatus
 NistBibliographicItem <-- NistCommentPeriod
 
 NistDocumentStatus <-- NistDocumentStatusType
 
 SeriesType <|-- NistPubSeriesType
-SeriesType <|-- NistSpSeriesType
 NistPubSeriesType <-- NistPubSeriesEnum
-NistSpSeriesType <-- NistSpSeriesEnum
 
 @enduml
 
