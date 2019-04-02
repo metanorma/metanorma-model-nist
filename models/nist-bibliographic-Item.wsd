@@ -154,7 +154,7 @@ NistPubSeriesType <-- NistPubSeriesEnum
 
 NistDocumentRelation --|> DocumentRelation
 NistDocumentRelationType --|> DocumentRelationType
-NistDocumentRelationType --> NistDocumentRelationType
+NistDocumentRelationType --> NistDocumentRelation
 
 @enduml
 

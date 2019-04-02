@@ -25,19 +25,19 @@ class NistStandardDocument {
 }
 
 class Preface {
-  +abstract: HierarchicalSection[0..1],
-  +authority: Authority,
-  +foreword: HierarchicalSection[0..1],
-  +clause: HierarchicalSection[0..*],
-  +reviewernote: HierarchicalSection[0..1],
-  +executivesummary: HierarchicalSection[0..1],
+  +abstract: HierarchicalSection[0..1]
+  +authority: Authority
+  +foreword: HierarchicalSection[0..1]
+  +clause: HierarchicalSection[0..*]
+  +reviewernote: HierarchicalSection[0..1]
+  +executivesummary: HierarchicalSection[0..1]
 }
 
 class Authority {
-  +authority1: StandardSection,
-  +authority2: StandardSection,
-  +authority3: StandardSection,
-  +authority4: StandardSection,
+  +authority1: StandardSection
+  +authority2: StandardSection
+  +authority3: StandardSection
+  +authority4: StandardSection
   +authority5: StandardSection
 }
 
