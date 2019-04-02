@@ -20,7 +20,6 @@ class StandardDocument <<StandardDocument>> {
 class NistStandardDocument {
   +bibdata: NistBibliographicItem
   +preface: Preface[0..1]
-  +introduction: HierarchicalSection[0..1]
   +sections: ClauseSection[1..*]
   +annex: AnnexSection[0..*]
 }
@@ -29,7 +28,6 @@ class Preface {
   +abstract: HierarchicalSection[0..1],
   +authority: Authority,
   +foreword: HierarchicalSection[0..1],
-  +introduction: HierarchicalSection[0..1],
   +clause: HierarchicalSection[0..*],
   +reviewernote: HierarchicalSection[0..1],
   +executivesummary: HierarchicalSection[0..1],
@@ -67,6 +65,7 @@ class Figure{
 }
 
 '******* NOTES ********************************************************
+note right of NistStandardDocument: The first section is titled "Introduction".
 
 
 
