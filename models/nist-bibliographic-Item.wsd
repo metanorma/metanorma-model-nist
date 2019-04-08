@@ -109,12 +109,15 @@ class NistCommentPeriod {
 }
 
 enum NistDocumentStatusType <<enumeration>> {
-  public-draft
+  draft-internal
+  draft-wip
+  draft-prelim
+  draft-public
+  draft-withdrawn
+  draft-retire
   final
-  retired-draft
-  withdrawn
-  private-draft
-  'private-draft is added since there is "public-draft"
+  final-review
+  final-withdrawn
 }
 
 class DocumentRelation <<biblio>> {
