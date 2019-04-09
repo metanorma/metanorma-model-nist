@@ -29,6 +29,7 @@ class NistBibliographicItem {
   'e.g. https://nvlpubs.nist.gov/nistpubs/FIPS/NIST.FIPS.202.pdf
   +doi: TypedUri
   'e.g. https://doi.org/10.6028/NIST.FIPS.202
+  +dates: NistBibliographicDate[0..*]
   +relation: NistDocumentRelation[0..*]
   +docemail: TypedUri[0..1]
   +series: NistPubSeriesType
@@ -39,8 +40,19 @@ class NistBibliographicItem {
   +commentPeriod: NistCommentPeriod[0..1]
 }
 
-'BibliographicDates:
-' release date, publication
+class BibliographicDate <<biblio>> {
+}
+
+class NistBibliographicDate {
+  +type: NistBibliographicDateType | text
+}
+
+enum BibliographicDateType <<biblio>> {
+}
+
+enum NistBibliographicDateType <<enumeration>> {
+  abandoned
+}
 
 class NistDocumentId {
   'id can be "201-2" in "FIPS 201-2" ("-2" is edition), or "1800-19" in "SP 1800-19" ("-19" is part)
@@ -149,15 +161,22 @@ NistBibliographicItem <-- NistPubSeriesType
 NistBibliographicItem <-- NistDocumentStatus
 NistBibliographicItem <-- NistCommentPeriod
 NistBibliographicItem <-- NistDocumentRelation
+NistBibliographicItem <-- NistBibliographicDate
+
+BibliographicDate <|-- NistBibliographicDate
+BibliographicDateType <|-- NistBibliographicDateType
+BibliographicDate <-- BibliographicDateType
+NistBibliographicDate <-- NistBibliographicDateType
 
 NistDocumentStatus <-- NistDocumentStatusType
 
 SeriesType <|-- NistPubSeriesType
 NistPubSeriesType <-- NistPubSeriesEnum
 
-NistDocumentRelation --|> DocumentRelation
-NistDocumentRelationType --|> DocumentRelationType
-NistDocumentRelationType --> NistDocumentRelation
+DocumentRelation <|-- NistDocumentRelation
+DocumentRelationType <|-- NistDocumentRelationType
+DocumentRelation <-- DocumentRelationType
+NistDocumentRelation <-- NistDocumentRelationType
 
 @enduml
 
