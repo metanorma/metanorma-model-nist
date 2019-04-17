@@ -22,6 +22,8 @@ class NistBibliographicItem {
   +documentIdentifier: NistDocumentId
   +title: FormattedString[1..*]
   +subtitle: FormattedString[0..*]
+  +short-title: FormattedString[0..*]
+  +short-subtitle: FormattedString[0..*]
   +document_class_title: FormattedString[0..*]
   +link: TypedUri
   'e.g. https://csrc.nist.gov/publications/detail/fips/202/final
@@ -151,6 +153,7 @@ enum NistDocumentRelationType <<enumeration>> {
 
 '******* NOTES ********************************************************
 note right of NistBibliographicItem: The type of uri is omitted.\nThe type of doi is "doi".
+note right of NistBibliographicItem: The various types of title are realised through\ntype attributes on Title.
 
 '******* CLASS RELATIONS **********************************************
 BibliographicItem <|-- NistBibliographicItem
