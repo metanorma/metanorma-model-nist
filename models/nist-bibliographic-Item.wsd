@@ -112,8 +112,9 @@ enum NistPubSeriesEnum <<enumeration>> {
 }
 
 class NistDocumentStatus {
-  +type: NistDocumentStatusType
+  +stage: NistDocumentStatusType
   +iteration: String[0..1]
+  +substage: NistDocumentSubstageType[0..1]
 }
 
 class NistCommentPeriod {
@@ -127,11 +128,14 @@ enum NistDocumentStatusType <<enumeration>> {
   draft-wip
   draft-prelim
   draft-public
-  draft-withdrawn
-  draft-retire
   final
   final-review
-  final-withdrawn
+}
+
+enum NistDocumentSubstageType <<enumeration>> {
+  active
+  withdrawn
+  retired
 }
 
 class DocumentRelation <<biblio>> {
