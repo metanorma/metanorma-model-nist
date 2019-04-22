@@ -54,6 +54,7 @@ enum BibliographicDateType <<biblio>> {
 
 enum NistBibliographicDateType <<enumeration>> {
   abandoned
+  superseded
 }
 
 class NistDocumentId {
