@@ -1,0 +1,9 @@
+# Document types include:
+name: NistBibliographicDateType
+modelType: enum
+type: enumeration
+values:
+  abandoned:
+    definition: 
+  superseded:
+    definition: 

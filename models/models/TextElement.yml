@@ -1,0 +1,10 @@
+name: TextElement
+modelType: class
+definition: |
+
+attributes:
+  type:
+    definition:
+    type: BasicDoc
+
+    

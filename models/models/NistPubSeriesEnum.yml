@@ -1,0 +1,46 @@
+name: NistPubSeriesEnum
+modelType: enum
+type: enumeration
+values:
+  nist-ams:
+    definition: Advanced Manufacturing Series (NIST AMS) value="2747816"
+  building-science: 
+    definition: Building Science Series value="8726"
+  nist-fips: 
+    definition: Federal Inf. Process. Stds. (NIST FIPS) value="8701"
+  nist-gcr: 
+    definition: Grant/Contract Reports (NISTGCR) value="8691"
+  nist-hb: 
+    definition: Handbook (NIST HB) value="8676" 
+  itl-bulletin: 
+    definition: ITL Bulletin value="8736"
+  jpcrd: 
+    definition: J. Phys. &amp; Chem. Ref. Data (JPCRD) value="8671"
+  nist-jres:
+    definition: Journal of Research (NIST JRES) value="8666"
+  letter-circular:
+    definition: Letter Circular value="8721"
+  nist-monograph:
+    definition: Monograph (NIST MN) value="8716"
+  nist-ncstar:
+    definition: National Construction Safety Team Act Reports (NIST NCSTAR) value="8706"
+  nist-nsrds:
+    definition: Natl Std. Ref. Data Series (NIST NSRDS) value="8696"
+  nistir:
+    definition: NIST Interagency/Internal Report (NISTIR) value="8711"
+  product-standards:
+    definition: Product Standards value="8731"
+  nist-sp:
+    definition: Special Publication (NIST SP) value="8681"
+  nist-tn:
+    definition: Technical Note (NIST TN) value="8686"
+  other:
+    definition: Other value="8741"
+  csrc-white-paper:
+    definition: 
+  csrc-book:
+    definition: 
+  csrc-use-case:
+    definition: 
+  csrc-building-block:
+    definition: 

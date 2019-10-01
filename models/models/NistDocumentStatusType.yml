@@ -1,0 +1,16 @@
+name: NistDocumentStatusType
+modelType: enum
+type: enumeration
+values:
+  draft-internal:
+    definition: 
+  draft-wip:
+    definition: 
+  draft-prelim:
+    definition: 
+  draft-public:
+    definition: 
+  final:
+    definition: 
+  final-review:
+    definition: 

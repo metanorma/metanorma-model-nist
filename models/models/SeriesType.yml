@@ -1,0 +1,8 @@
+name: SeriesType
+modelType: class
+definition: |
+
+attributes:
+  type:
+    definition: 
+    type: biblio

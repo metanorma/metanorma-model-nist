@@ -1,0 +1,34 @@
+# The first section is titled "Introduction".
+name: NistStandardDocument
+modelType: class
+definition: |
+
+attributes:
+  bibdata:
+    definition:
+    type: NistBibliographicItem
+  preface:
+    definition:
+    type: Preface
+    cardinality:
+      min: 0
+      max: 1
+  sections:
+    definition:
+    type: ClauseSection
+    cardinality:
+      min: 1
+      max: "*"
+  annex:
+    definition:
+    type: AnnexSection
+    cardinality:
+      min: 0
+      max: "*"
+relations:
+  - target: StandardDocument
+    relationship:
+      target:
+        type: direct
+    direction: up
+    

@@ -1,0 +1,8 @@
+name: BibliographicDate
+modelType: class
+definition: |
+
+attributes:
+  type:
+    definition: 
+    type: biblio

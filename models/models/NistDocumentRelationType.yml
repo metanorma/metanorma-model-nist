@@ -1,0 +1,10 @@
+name: NistDocumentRelationType
+modelType: enum
+type: enumeration
+values:
+  supersedes:
+    definition: 
+  supersededBy:
+    definition: 
+  obsoletedBy:
+    definition: 

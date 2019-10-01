@@ -1,0 +1,14 @@
+name: NistDocumentRelation
+modelType: class
+definition: |
+
+attributes:
+  type:
+    definition: 
+    type: NistDocumentRelationType
+relations:
+  - target: DocumentRelation
+    relationship:
+      target:
+        type: inheritance
+    direction: right

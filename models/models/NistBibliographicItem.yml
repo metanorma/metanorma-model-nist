@@ -1,0 +1,104 @@
+# The type of uri is omitted. The type of doi is "doi". 
+# The various types of title are realised through type attributes on Title.
+name: NistBibliographicItem
+modelType: class
+definition: |
+
+attributes:
+  type:
+    definition: 
+    type: BibItemType
+  documentIdentifier:
+    definition: 
+    type: NistDocumentId
+  title:
+    definition: 
+    type: FormattedString
+    cardinality:
+      min: 1
+      max: "*"
+  subtitle:
+    definition: 
+    type: FormattedString
+    cardinality:
+      min: 0
+      max: "*"
+  short-title:
+    definition: 
+    type: FormattedString
+    cardinality:
+      min: 0
+      max: "*"
+  short-subtitle:
+    definition: 
+    type: FormattedString
+    cardinality:
+      min: 0
+      max: "*"
+  document_class_title:
+    definition: 
+    type: FormattedString
+    cardinality:
+      min: 0
+      max: "*"
+  link:
+    definition: 
+    type: TypedUri
+  # e.g. https://csrc.nist.gov/publications/detail/fips/202/final
+  # uri:
+  #   definition: 
+  #   type: Uri
+  # e.g. https://nvlpubs.nist.gov/nistpubs/FIPS/NIST.FIPS.202.pdf
+  doi:
+    definition: 
+    type: TypedUri
+  # e.g. https://doi.org/10.6028/NIST.FIPS.202
+  dates:
+    definition: 
+    type: NistBibliographicDate
+    cardinality:
+      min: 0
+      max: "*"
+  relation:
+    definition: 
+    type: NistDocumentRelation
+    cardinality:
+      min: 0
+      max: "*"
+  docemail:
+    definition: 
+    type: TypedUri
+    cardinality:
+      min: 0
+      max: "*"
+  series:
+    definition: 
+    type: NistPubSeriesType
+  documentStatus:
+    definition: 
+    type: NistDocumentStatus
+    cardinality:
+      min: 0
+      max: 1
+  # edition can be "-1" in "FIPS 198-1" or "Rev. 1" in "SP 800-179 Rev. 1"
+  revision:
+    definition: 
+    type: String
+  keyword:
+    definition: 
+    type: String
+    cardinality:
+      min: 1
+      max: "*"
+  commentPeriod:
+    definition: 
+    type: NistCommentPeriod
+    cardinality:
+      min: 0
+      max: 1
+relations:
+  - target: BibliographicItem
+    relationship:
+      target:
+        type: inheritance
+    direction: up

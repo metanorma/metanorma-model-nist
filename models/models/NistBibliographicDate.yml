@@ -1,0 +1,19 @@
+name: NistBibliographicDate
+modelType: class
+definition: |
+
+attributes:
+  type:
+    definition: 
+    type: NistBibliographicDateType
+relations:
+  - target: BibliographicDate
+    relationship:
+      target:
+        type: inheritance
+    direction: up
+  - target: NistBibliographicItem
+    relationship:
+      target:
+        type: direct
+    direction: up

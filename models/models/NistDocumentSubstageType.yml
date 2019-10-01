@@ -1,0 +1,10 @@
+name: NistDocumentSubstageType
+modelType: enum
+type: enumeration
+values:
+  active:
+    definition: 
+  withdrawn:
+    definition: 
+  retired:
+    definition: 

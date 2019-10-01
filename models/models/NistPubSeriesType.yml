@@ -1,0 +1,28 @@
+name: NistPubSeriesType
+modelType: class
+definition: |
+
+attributes:
+  type:
+    definition: 
+    type: "main"
+  title:
+    definition: 
+    type: NistPubSeriesEnum
+  abbreviation:
+    definition: 
+    type: String
+    cardinality:
+      mix: 0
+      max: 1
+relations:
+  - target: SeriesType
+    relationship:
+      target:
+        type: inheritance
+    direction: up
+  - target: NistBibliographicItem
+    relationship:
+      target:
+        type: direct
+    direction: right

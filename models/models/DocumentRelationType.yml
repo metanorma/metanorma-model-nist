@@ -1,0 +1,14 @@
+name: DocumentRelationType
+modelType: class
+definition: |
+
+attributes:
+  type:
+    definition: 
+    type: biblio
+relations:
+  - target: DocumentRelation
+    relationship:
+      target:
+        type: direct
+    direction: up

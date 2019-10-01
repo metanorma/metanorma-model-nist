@@ -1,0 +1,26 @@
+name: NistCommentPeriod
+modelType: class
+definition: |
+
+attributes:
+  from:
+    definition: 
+    type: Date
+  to:
+    definition: 
+    type: Date
+    cardinality:
+      mix: 0
+      max: 1
+  extended:
+    definition: 
+    type: Date
+    cardinality:
+      mix: 0
+      max: 1
+relations:
+  - target: NistBibliographicItem
+    relationship:
+      target:
+        type: direct
+    direction: up

@@ -1,0 +1,27 @@
+name: Authority
+modelType: class
+definition: |
+
+attributes:
+  authority1:
+    definition:
+    type: StandardSection
+  authority2:
+    definition:
+    type: StandardSection
+  authority3:
+    definition:
+    type: StandardSection
+  authority4:
+    definition:
+    type: StandardSection
+  authority5:
+    definition:
+    type: StandardSection
+relations:
+  - target: Preface
+    relationship:
+      target:
+        type: direct
+    direction: up
+    

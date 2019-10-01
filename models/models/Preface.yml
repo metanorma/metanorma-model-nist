@@ -1,0 +1,45 @@
+name: Preface
+modelType: class
+definition: |
+
+attributes:
+  abstract:
+    definition:
+    type: HierarchicalSection
+    cardinality:
+      min: 0
+      max: 1
+  authority:
+    definition:
+    type: Authority
+  foreword:
+    definition:
+    type: HierarchicalSection
+    cardinality:
+      min: 0
+      max: 1
+  clause:
+    definition:
+    type: HierarchicalSection
+    cardinality:
+      min: 0
+      max: "*"
+  reviewernote:
+    definition:
+    type: HierarchicalSection
+    cardinality:
+      min: 0
+      max: 1
+  executivesummary:
+    definition:
+    type: HierarchicalSection
+    cardinality:
+      min: 0
+      max: 1
+relations:
+  - target: NistStandardDocument
+    relationship:
+      target:
+        type: direct
+    direction: up
+    
