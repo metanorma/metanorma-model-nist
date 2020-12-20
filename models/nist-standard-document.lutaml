@@ -1,0 +1,87 @@
+diagram nist-standard-document {
+  
+  
+  
+  class StandardDocument <<StandardDocument>> {
+  
+  }
+  
+  class NistStandardDocument {
+    +bibdata: NistBibliographicItem
+    +preface: Preface[0..1]
+    +sections: ClauseSection[1..*]
+    +annex: AnnexSection[0..*]
+  }
+  
+  class Preface {
+    +abstract: HierarchicalSection[0..1]
+    +authority: Authority
+    +foreword: HierarchicalSection[0..1]
+    +clause: HierarchicalSection[0..*]
+    +reviewernote: HierarchicalSection[0..1]
+    +executivesummary: HierarchicalSection[0..1]
+  }
+  
+  class Authority {
+    +authority1: StandardSection
+    +authority2: StandardSection
+    +authority3: StandardSection
+    +authority4: StandardSection
+    +authority5: StandardSection
+  }
+  
+  
+  class TextElement <<BasicDoc>>{
+  
+  }
+  
+  class Keyword {
+  
+  }
+  
+  class IdElement <<BasicDoc>>{
+  
+  }
+  
+  class Figure{
+      +source: String[0..1]
+      +name: LocalizedString[0..1]
+      +note: ParagraphWithFootnote[0..*]
+      +figure: Figure[0..*]
+      +definitions: DefinitionList[0..1]
+      +pre: String[0..1]
+      +content: TextElement[0..*]
+  }
+  
+  
+  
+  
+  association {
+    owner StandardDocument
+    member NistStandardDocument
+    owner_type direct
+  }
+  association {
+    owner NistStandardDocument
+    member Preface
+    owner_type direct
+  }
+  association {
+    owner Preface
+    member Authority
+    owner_type direct
+  }
+  
+  association {
+    owner TextElement
+    member Keyword
+    owner_type direct
+  }
+  
+  association {
+    owner IdElement
+    member Figure
+    owner_type direct
+  }
+  
+}
